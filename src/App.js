@@ -45,7 +45,7 @@ const App = () => {
             db.collection("messages").add({
                 user: user,
                 message: field,
-                timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                timestamp: Date()
             })
             // CLEAR THE INPUT FIELD
             setField("");
