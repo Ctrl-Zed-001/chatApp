@@ -1,0 +1,42 @@
+.message-box{
+    bottom: 0;
+    background-color: whitesmoke;
+}
+.send_button{
+    background-color: #5c5dad;
+    padding: 8px 10px 8px 10px
+}
+.send_button img{
+    height: 1rem;
+}
+.bg-custom{
+    background-color: #5c5dad
+}
+.message_recieved{
+    background-color: #5c5dad;
+    border-radius: 20px;
+    border-bottom-left-radius: 0;
+    width: fit-content;
+    word-wrap: break-word;
+    max-width: 100%;
+}
+.message_sent{
+    background-color: #e0e0e0;
+    border-radius: 20px;
+    border-bottom-right-radius: 0;
+    width: fit-content;
+    margin-right: 0 !important;
+    max-width: 100%;
+}
+.message_sent p{
+    color: #333;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word;
+}
+.message_recieved p{
+    word-wrap: break-word !important;
+    overflow-wrap: break-word;
+}
+.message_bubble:last-child{
+    margin-bottom: 4.5rem;
+}
