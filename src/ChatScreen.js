@@ -20,33 +20,37 @@ const ChatScreen = (props) => {
     useEffect(
         () => {
             // IF USER NOT LOGGED IN THEN REDIRECT TO LOGIN PAGE
-            if (!props.user.name) {
-                history.push("/")
-            }
+
             inputRef.current.focus()
-        }
+        }, []
     )
 
 
     useEffect(
         () => {
-            // GETTING CHAT INFO
-            db.collection("chats")
-                .doc(roomid)
-                .onSnapshot(snapshot => {
-                    setChatinfo(snapshot.data());
-                });
+            if (!props.user.name) {
+                history.push("/")
+            } else {
+                // GETTING CHAT INFO
+                db.collection("chats")
+                    .doc(roomid)
+                    .onSnapshot(snapshot => {
+                        setChatinfo(snapshot.data());
+                    });
 
 
-            // GETTING THE MESSAGES
-            db.collection("chats")
-                .doc(roomid)
-                .collection("messages")
-                .onSnapshot(snapshot => {
-                    setMessages(snapshot.docs.map(doc => {
-                        return doc.data()
-                    }))
-                })
+                // GETTING THE MESSAGES
+                db.collection("chats")
+                    .doc(roomid)
+                    .collection("messages")
+                    .orderBy("timestamp", "asc")
+                    .onSnapshot(snapshot => {
+                        setMessages(snapshot.docs.map(doc => {
+                            console.log(doc.data())
+                            return doc.data()
+                        }))
+                    })
+            }
 
             return () => {
                 setChatinfo({})
@@ -73,7 +77,7 @@ const ChatScreen = (props) => {
                 .collection("messages")
                 .add({
                     message: field,
-                    timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                    timestamp: Date.now(),
                     user: props.user.name
                 })
 

@@ -9,7 +9,7 @@ const Navbar = (props) => {
                     {
                         props.back === "true" ?
                             <div className="col-1">
-                                <Link to="/"><i className="carousel-control-prev-icon mt-backbtn"></i></Link>
+                                <Link to="/chat"><i className="carousel-control-prev-icon mt-backbtn"></i></Link>
                             </div> :
                             <></>
                     }

@@ -12,23 +12,19 @@ const AllChats = (props) => {
 
     const history = useHistory()
 
-    useEffect(
-        () => {
-            // IF USER NOT LOGGED IN THEN REDIRECT TO LOGIN PAGE
-            if (!props.user.name) {
-                history.push("/")
-            }
-        }, []
-    )
 
     useEffect(
         () => {
-            db.collection("chats")
-                .onSnapshot(snapshot => {
-                    setChats(snapshot.docs.map(doc => {
-                        return { id: doc.id, ...doc.data() }
-                    }))
-                })
+            if (!props.user.name) {
+                history.push("/")
+            } else {
+                db.collection("chats")
+                    .onSnapshot(snapshot => {
+                        setChats(snapshot.docs.map(doc => {
+                            return { id: doc.id, ...doc.data() }
+                        }))
+                    })
+            }
             return () => {
                 setChats([])
             }
