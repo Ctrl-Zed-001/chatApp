@@ -53,3 +53,26 @@
     color: white;
     text-align: right;
 }
+.pointer{
+    cursor: pointer;
+}
+.chat_hover:hover{
+    background-color: whitesmoke;
+    transition: 0.5s;
+}
+a{
+    color:#333;
+    text-decoration: none;
+}
+.mt-backbtn{
+    margin-top: 0.8rem;
+}
+.mt-chatname{
+    margin-top: 0.2rem;
+}
+.fab{
+    padding: 1rem 1.1rem;
+    font-size: 1.4rem;
+    bottom: 0;
+    right: 2rem;
+}
